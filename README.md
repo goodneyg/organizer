@@ -1,5 +1,5 @@
 # Organizer
-Project goal is to create a school work organizer similar to Notion
+Project goal is to create a school work organizer similar to Notion. 
 
 ## Goals:
 - Entry boxes per assignment for:
