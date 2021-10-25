@@ -1,9 +1,16 @@
 package organizer;
+import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
+
 public class gui extends JFrame
 {
     public gui()
@@ -16,8 +23,8 @@ public class gui extends JFrame
         //actual data for the table in a 2d array
         Object[][] data = new Object[][] {
             {"hw1", "2/3/4", "acc", "in-prog", "online" },
-            {"hw2", "3", "econ", "done", "in notebook" },
-            {"hw3", "8", "compsci", "not started", "online" },
+            {"hw2", "3/5/2", "econ", "done", "in notebook" },
+            {"hw3", "8/7/5", "compsci", "not started", "online" },
         };
          
         final Class[] columnClass = new Class[] {
@@ -38,6 +45,7 @@ public class gui extends JFrame
         };
          
         JTable table = new JTable(model);
+        
          
         //add the table to the frame
         this.add(new JScrollPane(table));
@@ -46,7 +54,35 @@ public class gui extends JFrame
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);       
         this.pack();
         this.setVisible(true);
+        
+        //----
+        JButton button1 = new JButton("Add blank");
+        button1.addActionListener(new ActionListener() {
+        	public void actionPerformed(java.awt.event.ActionEvent evt) {
+                String name = JOptionPane.showInputDialog(button1,
+                        "Assignment name:", null);
+                System.out.println(name);
+                String date = JOptionPane.showInputDialog(button1,
+                        "Due date:", null);
+                System.out.println(date);
+                String className = JOptionPane.showInputDialog(button1,
+                        "Class name:", null);
+                System.out.println(className);
+                String status = JOptionPane.showInputDialog(button1,
+                        "Status:", null);
+                System.out.println(status);
+                String info = JOptionPane.showInputDialog(button1,
+                        "Extra info:", null);
+                System.out.println(info);
+            }
+        });
+        
+        //----
+        JPanel southPanel = new JPanel();
+        southPanel.add(button1);
+        add(southPanel, BorderLayout.SOUTH);
     }
+    
      
     public static void main(String[] args)
     {
