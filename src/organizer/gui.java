@@ -25,8 +25,10 @@ public class gui extends JFrame
             {"hw1", "2/3/4", "acc", "in-prog", "online" },
             {"hw2", "3/5/2", "econ", "done", "in notebook" },
             {"hw3", "8/7/5", "compsci", "not started", "online" },
+            {"", "", "", "", "" }
         };
-         
+       
+        
         final Class[] columnClass = new Class[] {
             String.class, String.class, String.class, String.class, String.class
         };
@@ -35,7 +37,7 @@ public class gui extends JFrame
             @Override
             public boolean isCellEditable(int row, int column)
             {
-                return false;
+                return true;
             }
             @Override
             public Class<?> getColumnClass(int columnIndex)
@@ -44,6 +46,7 @@ public class gui extends JFrame
             }
         };
          
+        
         JTable table = new JTable(model);
         
          
@@ -56,30 +59,41 @@ public class gui extends JFrame
         this.setVisible(true);
         
         //----
-        JButton button1 = new JButton("Add blank");
+        JButton button1 = new JButton("Add assignment");
         button1.addActionListener(new ActionListener() {
         	public void actionPerformed(java.awt.event.ActionEvent evt) {
                 String name = JOptionPane.showInputDialog(button1,
                         "Assignment name:", null);
-                System.out.println(name);
+//increment the db
+                
+                System.out.println("Assignment name:" +name);
                 String date = JOptionPane.showInputDialog(button1,
                         "Due date:", null);
-                System.out.println(date);
+                System.out.println("Due date:" +date);
                 String className = JOptionPane.showInputDialog(button1,
                         "Class name:", null);
-                System.out.println(className);
+                System.out.println("Class name:" +className);
                 String status = JOptionPane.showInputDialog(button1,
                         "Status:", null);
-                System.out.println(status);
+                System.out.println("Status:" +status);
                 String info = JOptionPane.showInputDialog(button1,
                         "Extra info:", null);
-                System.out.println(info);
+                System.out.println("Extra info:" +info);
             }
+        });
+        JButton button2 = new JButton("Info/Debug");
+        button2.addActionListener(new ActionListener() {
+        	public void actionPerformed(java.awt.event.ActionEvent evt) {
+                String infoPannel = JOptionPane.showInputDialog(button2,
+                        "this is an info pane", null);
+                System.out.println("debug" +infoPannel);
+        	}
         });
         
         //----
         JPanel southPanel = new JPanel();
         southPanel.add(button1);
+        southPanel.add(button2);
         add(southPanel, BorderLayout.SOUTH);
     }
     
