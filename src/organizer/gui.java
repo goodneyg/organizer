@@ -10,6 +10,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
+import java.util.Arrays;
 
 public class gui extends JFrame
 {
@@ -27,9 +28,10 @@ public class gui extends JFrame
             {"hw3", "8/7/5", "compsci", "not started", "online" },
             {"", "", "", "", "" }
         };
+        
        
         
-        final Class[] columnClass = new Class[] {
+        Class[] columnClass = new Class[] {
             String.class, String.class, String.class, String.class, String.class
         };
         //create table model with data
@@ -44,12 +46,12 @@ public class gui extends JFrame
             {
                 return columnClass[columnIndex];
             }
+            
         };
-         
         
         JTable table = new JTable(model);
         
-         
+       
         //add the table to the frame
         this.add(new JScrollPane(table));
          
@@ -57,15 +59,13 @@ public class gui extends JFrame
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);       
         this.pack();
         this.setVisible(true);
-        
         //----
         JButton button1 = new JButton("Add assignment");
         button1.addActionListener(new ActionListener() {
         	public void actionPerformed(java.awt.event.ActionEvent evt) {
                 String name = JOptionPane.showInputDialog(button1,
                         "Assignment name:", null);
-//increment the db
-                
+                //this is where some code would go
                 System.out.println("Assignment name:" +name);
                 String date = JOptionPane.showInputDialog(button1,
                         "Due date:", null);
@@ -81,12 +81,17 @@ public class gui extends JFrame
                 System.out.println("Extra info:" +info);
             }
         });
+        
         JButton button2 = new JButton("Info/Debug");
         button2.addActionListener(new ActionListener() {
         	public void actionPerformed(java.awt.event.ActionEvent evt) {
                 String infoPannel = JOptionPane.showInputDialog(button2,
                         "this is an info pane", null);
                 System.out.println("debug" +infoPannel);
+                data[1][1] = "test";
+                
+                System.out.println(Arrays.deepToString(data));
+                
         	}
         });
         
